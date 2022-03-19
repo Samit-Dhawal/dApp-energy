@@ -5,6 +5,7 @@ export default function Home()
 {
     return <div>
         <Header />
-        <h3> Hello Samit </h3>
+        {/* <h3> Hello Samit </h3> */}
+
     </div>
 }
