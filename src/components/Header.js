@@ -4,14 +4,15 @@ export default function Header()
 {
     return (
         <div style={styles.headerContainer}>
-            <h2 style={{ margin: 10 }}><a href="/" style={{color:'black',textDecoration:'none'}}>Save Energy</a></h2>
-            <div style={styles.auth}>
-                <a href="signup" style={styles.loginSignUpBtn}>
-                    SignUp
+            <h2 style={{ margin: 10 }}><a href="/" style={styles.logo}>Save Energy</a></h2>
+            <div style={styles.authModule}>
+                <a href="signup" style={styles.signinSignUpBtn}>
+                    Sign Up
                 </a>
-                <a href="login" style={styles.loginSignUpBtn}>
-                    Login
+                <a href="signin" style={styles.signinSignUpBtn}>
+                    Sign In
                 </a>
+
             </div>
         </div>
     );
@@ -24,20 +25,37 @@ const styles = {
         alignItems: "center",
         justifyContent: "space-between",
         fontFamily: "monospace",
-        backgroundColor: "#aaa"
+        backgroundColor: "#aaa",
+        borderRadius: "4px",
+        margin: "1px 4px",
+
     },
-    auth: {
+    logo: {
+        textDecoration: 'none',
+        backgroundColor: "#4CAF50",
+        borderRadius: "4px",
+        padding: 10,
+        color: "black"
+
+
+    },
+    authModule: {
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-around"
 
     },
-    loginSignUpBtn: {
-        backgroundColor: "blue",
+    signinSignUpBtn: {
+        backgroundColor: "#4CAF50",
         textDecoration: "none",
-        color: "white",
+        color: "black",
+        margin: 10,
+        fontFamily: "Monaco",
+        cursor: "pointer",
+        border: "0.5px solid white",
+        borderRadius: "4px",
         padding: 10,
-        margin: 10
+
     }
 };

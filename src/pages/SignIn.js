@@ -1,10 +1,11 @@
 import React from 'react';
-import Header from '../components/Header';
-export default function SignUp()
+import Header from '../components/Header'
+
+export default function SignIn()
 {
-    return <div >
+    return <div>
         <Header />
-        <h1 style={styles.signUpHere}>Sign Up Here</h1>
+        <h1 style={styles.signInHere}>Sign In Here</h1>
 
         <form style={styles.formOnly}>
             <label style={styles.label}>Email:</label><br />
@@ -14,13 +15,13 @@ export default function SignUp()
             <input type="password" name="password" style={styles.input} placeholder="Enter password" />
             <br />
             <input type="submit" value="Submit" style={styles.submit} />
-        </form>
-    </div>
+        </form >
+    </div >
 }
 
 
 const styles = {
-    signUpHere: {
+    signInHere: {
         fontFamily: 'monospace',
         backgroundColor: "#4CAF50",
         color: "black",
@@ -48,7 +49,7 @@ const styles = {
         backgroundColor: "#4CAF50",
         color: "black",
         padding: "12px 20px",
-        width: "30%",
+        width: "29%",
         margin: "8px 0",
         cursor: "pointer",
         fontFamily: "Verdana",

@@ -1,13 +1,15 @@
 import Home from "./pages/Home";
-import Login from "./pages/Login";
+import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
+import Wallet from "./pages/Wallet";
+import Profile from "./pages/Profile";
+
 import
 {
   BrowserRouter,
   Routes,
   Route,
 } from "react-router-dom";
-import Profile from "./pages/Profile";
 
 
 function App()
@@ -17,9 +19,10 @@ function App()
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/wallet" element={<Wallet />} />
 
         </Routes>
       </BrowserRouter>
