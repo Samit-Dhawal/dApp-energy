@@ -4,7 +4,7 @@ export default function Header()
 {
     return (
         <div style={styles.headerContainer}>
-            <h2 style={{ margin: 10 }}>Save Energy</h2>
+            <h2 style={{ margin: 10 }}><a href="/" style={{color:'black',textDecoration:'none'}}>Save Energy</a></h2>
             <div style={styles.auth}>
                 <a href="signup" style={styles.loginSignUpBtn}>
                     SignUp
