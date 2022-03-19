@@ -1,8 +1,10 @@
 import React from 'react';
+import Header from '../components/Header'
 
 export default function Login()
 {
     return <div>
+        <Header />
         <form style={{ textAlign: "center", padding: 100 }}>
             <label>
                 Username:<br />

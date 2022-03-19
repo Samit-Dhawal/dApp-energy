@@ -1,8 +1,9 @@
 import React from 'react';
-
+import Header from '../components/Header';
 export default function SignUp()
 {
     return <div>
+        <Header />
         <form style={{ textAlign: "center", padding: 100 }}>
             <label>
                 Email:<br />
