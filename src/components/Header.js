@@ -15,7 +15,7 @@ export default function Header(){
         if(checkData(id)&&checkData(email)&&checkData(wallet)){
             setEmail(email);setId(id);setWallet(wallet);
         }
-    });
+    },[]);
     const logout = ()=>{
         localStorage.setItem('id','');
         localStorage.setItem('email','');

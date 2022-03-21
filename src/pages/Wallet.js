@@ -19,7 +19,7 @@ export default function Wallet(){
         }else{
             window.location.href="signin";
         }
-    })
+    },[])
     return (
         <div>
             <Header />
