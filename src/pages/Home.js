@@ -22,7 +22,7 @@ export default function Home(){
         }
     },[])
     const getHoldings=async()=>{
-        await fetch(`http://localhost:8001/readHoldings`).then(res=>res.json()).then(data=>{
+        await fetch(`https://dapp-energy.herokuapp.com/readHoldings`).then(res=>res.json()).then(data=>{
             if(data.success){
                 setSaleData(data.data);
                 setError(false);

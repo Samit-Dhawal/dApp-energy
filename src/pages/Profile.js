@@ -35,7 +35,7 @@ export default function Profile(){
         setForm(true);
     }
     const saveHolding=async()=>{
-        await fetch(`http://localhost:8001/createHolding?email=${email}&id=${id}&units=${newUnits}&price=${newPrice}`).then(res=>res.json()).then(data=>{
+        await fetch(`https://dapp-energy.herokuapp.com/createHolding?email=${email}&id=${id}&units=${newUnits}&price=${newPrice}`).then(res=>res.json()).then(data=>{
             if(data.success){
                 setForm(false);
                 setError(false);
@@ -46,7 +46,7 @@ export default function Profile(){
         })
     }
     const getHoldings=async()=>{
-        await fetch(`http://localhost:8001/readHoldingById?id=${id}`).then(res=>res.json()).then(data=>{
+        await fetch(`https://dapp-energy.herokuapp.com/readHoldingById?id=${id}`).then(res=>res.json()).then(data=>{
             if(data.success){
                 setHoldings(data.data)
                 console.log('holding')
@@ -57,7 +57,7 @@ export default function Profile(){
         })
     }
     const getTransactions=async()=>{
-        await fetch(`http://localhost:8001/readTransactions`).then(res=>res.json()).then(data=>{
+        await fetch(`https://dapp-energy.herokuapp.com/readTransactions`).then(res=>res.json()).then(data=>{
             if(data.success){
                 setTransactions(data.data);
                 console.log('transactions')
