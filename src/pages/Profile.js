@@ -1,24 +1,29 @@
-import {useEffect,useState} from 'react';
+import { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import Holdings from '../components/profile-components/Holdings';
 import Transaction from '../components/profile-components/Transaction';
 
-export default function Profile(){
-    const [email,setEmail] = useState('');
-    const [id,setId]=useState('');
-    const [wallet,setWallet]=useState('');
-    const checkData=(x)=>{
-        if(x===null||x===undefined||x===''){return false}
+export default function Profile()
+{
+    const [email, setEmail] = useState('');
+    const [id, setId] = useState('');
+    const [wallet, setWallet] = useState('');
+    const checkData = (x) =>
+    {
+        if (x === null || x === undefined || x === '') { return false }
         return true;
     }
-    useEffect(()=>{
+    useEffect(() =>
+    {
         var id = localStorage.getItem('id');
         var email = localStorage.getItem('email');
         var wallet = localStorage.getItem('wallet');
-        if(checkData(id)&&checkData(email)&&checkData(wallet)){
-            setId(id);setEmail(email);setWallet(wallet);
-        }else{
-            window.location.href="signin";
+        if (checkData(id) && checkData(email) && checkData(wallet))
+        {
+            setId(id); setEmail(email); setWallet(wallet);
+        } else
+        {
+            window.location.href = "signin";
         }
     })
     var holdings = [{ units: 100, price: '10$' }, { units: 120, price: '6$' }, { units: 150, price: '12$' }, { units: 200, price: '10$' }, { units: 150, price: '12$' }]
@@ -27,8 +32,12 @@ export default function Profile(){
     return (
         <>
             <Header />
+
             <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', padding: 20 }}>
                 <h2>{email}</h2><h2>Wallet : {wallet}$</h2>
+                <form style={styles.submit}>
+                    <a href="/wallet" style={styles.submit}>Add Money (+)</a>
+                </form >
             </div>
             <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', padding: 40 }}>
                 <h1 style={{ fontFamily: 'monospace' }}>Your Holdings</h1>
@@ -57,3 +66,15 @@ export default function Profile(){
     )
 }
 
+
+const styles = {
+    submit: {
+        backgroundColor: "#4CAF50",
+        color: "black",
+        padding: "3px",
+        margin: "1px",
+        fontFamily: "Verdana",
+        borderRadius: "4px",
+        textDecoration: "none"
+    }
+};

@@ -23,7 +23,6 @@ function App()
           <Route path="/signup" element={<SignUp />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/wallet" element={<Wallet />} />
-
         </Routes>
       </BrowserRouter>
 
