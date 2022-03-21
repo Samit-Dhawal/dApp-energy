@@ -19,6 +19,7 @@ export default function Header()
         {
             setEmail(email); setId(id); setWallet(wallet);
         }
+<<<<<<< HEAD
     });
     const logout = () =>
     {
@@ -26,6 +27,14 @@ export default function Header()
         localStorage.setItem('email', '');
         localStorage.setItem('wallet', '');
         window.location.href = "/";
+=======
+    },[]);
+    const logout = ()=>{
+        localStorage.setItem('id','');
+        localStorage.setItem('email','');
+        localStorage.setItem('wallet','');
+        window.location.href="/";
+>>>>>>> cfd619f659b89d04b63b79d868a4652c8b7b42d0
     }
     return (
         <div style={styles.headerContainer}>

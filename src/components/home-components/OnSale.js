@@ -1,9 +1,44 @@
-export default function OnSale({ name, units, price })
-{
+import {useState,useEffect} from 'react';
+export default function OnSale({ name, units, price }){
+    const checkData=(x)=>{
+        if(x===null||x===undefined||x===''){return false}
+        return true;
+    }
+    const [email,setEmail]=useState('');
+    const [id,setId]=useState('');
+    const [wallet,setWallet]=useState('');
+    const [error,setError]=useState(false);
+    useEffect(()=>{
+        var id = localStorage.getItem('id');
+        var email = localStorage.getItem('email');
+        var wallet = localStorage.getItem('wallet');
+        if(checkData(id)&&checkData(email)&&checkData(wallet)){
+            setEmail(email);setId(id);setWallet(wallet);
+        }else{
+            console.log('not logged in')
+            // alert('Not logged In, Login first.');
+            // window.location.href="/signin";
+        }
+    })
+    const buy=(units,price)=>{
+        console.log(wallet,units*price);
+        if(wallet<(units*price)){
+            setError(true);
+        }else{
+            var choice = window.confirm(`Hi ${email}!\nYour wallet has:${wallet}.\nYour total buying:${units*price}\nYour wallet will have:${wallet-(units*price)}\n\nDo you want to continue ?`);
+            if(choice){
+
+            }else{
+                alert("Transaction declined")
+            }
+        }
+
+    }
     return (
         <div style={styles.contianer}>
+            {error?(<><label style={{color:'red',fontWeight:800,fontSize:20}}>Error: Not enough money available in the wallet.</label><br/></>):(<></>)}
             <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-                <h2>Seller : {name}</h2><button>Buy</button>
+                <h2>Seller : {name}</h2><button style={{backgroundColor:'#2962ff',color:'white',padding:5,border:'0px'}} onClick={()=>buy(units,price)}>Buy</button>
             </div>
             <br />
             <hr />

@@ -26,7 +26,7 @@ export default function Wallet()
         {
             window.location.href = "signin";
         }
-    });
+    }, []);
 
     const updateWallet = async (evt) =>
     {
