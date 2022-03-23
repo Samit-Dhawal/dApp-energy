@@ -20,14 +20,21 @@ export default function OnSale({ name, units, price }){
             // window.location.href="/signin";
         }
     })
-    const buy=(units,price)=>{
+    const buy=async (units,price)=>{
         console.log(wallet,units*price);
         if(wallet<(units*price)){
             setError(true);
         }else{
             var choice = window.confirm(`Hi ${email}!\nYour wallet has:${wallet}.\nYour total buying:${units*price}\nYour wallet will have:${wallet-(units*price)}\n\nDo you want to continue ?`);
             if(choice){
-
+                await fetch(`http://localhost:8001/createTransaction?from=${name}&to=${email}&units=${units}&total=${units*price}`).then(res=>res.json()).then(async(data)=>{
+                    if(data.success){
+                        console.log('transaction complete');
+                        await fetch()
+                    }else{
+                        console.log('transaction decliened');
+                    }
+                })
             }else{
                 alert("Transaction declined")
             }

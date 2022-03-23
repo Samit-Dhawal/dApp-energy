@@ -25,12 +25,12 @@ export default function Profile(){
             setId(id);
             setEmail(email);
             setWallet(wallet);
-            await getHoldings();
             await getTransactions();
+            await getHoldings();
         }else{
             window.location.href="signin";
         }
-    },[])
+    },[id,email,wallet])
     const openForm =()=>{
         setForm(true);
     }
@@ -46,10 +46,12 @@ export default function Profile(){
         })
     }
     const getHoldings=async()=>{
+        console.log('id',id);
         await fetch(`https://dapp-energy.herokuapp.com/readHoldingById?id=${id}`).then(res=>res.json()).then(data=>{
             if(data.success){
                 setHoldings(data.data)
                 console.log('holding')
+                console.table(data.data);
                 setError(false);
             }else{
                 setError(true);
@@ -61,6 +63,7 @@ export default function Profile(){
             if(data.success){
                 setTransactions(data.data);
                 console.log('transactions')
+                console.table(data.data);
                 setError(false);
             }else{
                 setError(true);
@@ -82,7 +85,7 @@ export default function Profile(){
                     
             <div style={{ paddingLeft: 60, paddingRight: 60 }}>
             {error?(<><label style={{color:'red',fontWeight:800,fontSize:20}}>Error: Not able to add holding, try again later</label><br/></>):(<></>)}
-                {holdings.length === 0 ? (
+                {holdings.length===0 ? (
                     <h2>Your current holding is empty, add new holding to sell electricity</h2>
                 ) : (<>
                     {holdings.map((item, index) => (
@@ -92,11 +95,12 @@ export default function Profile(){
             </div>
             <h1 style={{ fontFamily: 'monospace', padding: 40 }}>Transactions</h1>
             <div style={{ paddingLeft: 60, paddingRight: 60 }}>
-                {transactions.length === 0 ? (
+                {transactions.length===0 ? (
                     <h2>Your have no transactions, buy or sell energy units now.</h2>
                 ) : (<>
                     {transactions.map((item, index) => (
-                        <Transaction from={item.From} to={item.To} units={item.Units} total={item.Total} key={index} />
+                        item.From==email||item.To==email?
+                        <Transaction from={item.From} to={item.To} units={item.Units} total={item.Total} key={index} />:(<></>)
                     ))}
                 </>)}
             </div>
