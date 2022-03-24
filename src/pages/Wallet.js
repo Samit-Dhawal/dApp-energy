@@ -31,7 +31,6 @@ export default function Wallet()
     const updateWallet = async (evt) =>
     {
         evt.preventDefault();
-        console.log(wallet);
         await fetch(`http://localhost:8001/updateWallet?wallet=${ parseInt(wallet) + parseInt(newWallet) }&_id=${ id }`).then(res => res.json()).then(async (data) =>
         {
             console.log(data);
