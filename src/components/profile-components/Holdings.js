@@ -1,9 +1,9 @@
-export default function Holdings({ units, price })
+export default function Holdings({sr, units, price })
 {
     return (
-        <div style={styles.container}>
-            <h2>Units : {units}</h2><h2>Price/Unit : {price}</h2><p></p><button>X</button>
-        </div>
+        <tr style={{fontSize:15}}>
+            <td>{sr}</td><td>{units}</td><td>{price}</td><td><button>X</button></td>
+        </tr>
     )
 }
 
@@ -12,7 +12,7 @@ const styles = {
         display: 'flex',
         flexDirection: 'row',
         border: '2px solid gray',
-        padding: 10, margin: 10,
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        padding:5
     }
 }

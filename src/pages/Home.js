@@ -39,9 +39,9 @@ export default function Home(){
         <div style={styles.backGround}>
             {error?(<><label style={{color:'red',fontWeight:800,fontSize:20}}>Error: Not able to fetch holding, try again later.Try refreshing.</label><br/></>):(<></>)}
             <div style={{ display: 'flex', justifyContent: 'space-around', flexDirection: 'row', flexWrap: 'wrap' }}>
-                {saleData.map((item, index) => (<>
+                {saleData.length===0?(<h1>Loading ...</h1>):(<>{saleData.map((item, index) => (<>
                     {item.Email!==email?(<><OnSale name={item.Email} units={item.Units} price={item.Price} key={index} /></>):(<></>)}
-                    </>))}
+                    </>))}</>)}
             </div>
         </div>
         {/* <h3> Hello Samit </h3> */}
