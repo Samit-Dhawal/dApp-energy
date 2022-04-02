@@ -1,8 +1,8 @@
 export default function Transaction({from,to,units,total}){
     return(
-        <div style={styles.container}>
-            <h2>{from} {" -> "} {to}</h2><p>{units} units</p><p>{total}</p>
-        </div>
+        <tr style={{fontSize:15}}>
+            <td>{from}</td><td>{to}</td><td>{units}</td><td>{total}</td>
+        </tr>
     )
 }
 

@@ -19,7 +19,7 @@ export default function OnSale({ name, units, price }){
             // alert('Not logged In, Login first.');
             // window.location.href="/signin";
         }
-    })
+    },[id,wallet,email])
     const buy=async (units,price)=>{
         console.log(wallet,units*price);
         if(wallet<(units*price)){
@@ -30,7 +30,14 @@ export default function OnSale({ name, units, price }){
                 await fetch(`http://localhost:8001/createTransaction?from=${name}&to=${email}&units=${units}&total=${units*price}`).then(res=>res.json()).then(async(data)=>{
                     if(data.success){
                         console.log('transaction complete');
-                        await fetch()
+                        await fetch(`http://localhost:8001/updateWallet?wallet=${ parseInt(wallet) - parseInt(units*price) }&_id=${ id }`).then(res=>res.json()).then(data=>{
+                            console.log(data);
+                            if(data.success){
+                                localStorage.setItem('wallet',(parseInt(wallet)-parseInt(units*price)));
+                                setWallet(parseInt(wallet)-parseInt(units*price));
+                                window.location.reload();
+                            }
+                        })
                     }else{
                         console.log('transaction decliened');
                     }

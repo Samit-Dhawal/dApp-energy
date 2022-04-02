@@ -96,33 +96,40 @@ export default function Profile()
                     <a href="/wallet" style={styles.submit}>Add Money (+)</a>
                 </form >
             </div>
-            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', padding: 40 }}>
+            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', padding: 20 }}>
                 <h1 style={{ fontFamily: 'monospace' }}>Your Holdings</h1>
                 {form ? (<div><input type="text" placeholder='Enter Units' value={newUnits} onChange={(evt => { setNewUnits(evt.target.value) })} />{"  "}<input type="text" placeholder='Enter price/unit' value={newPrice} onChange={(evt => { setNewPrice(evt.target.value) })} />{"  "}<button onClick={() => { saveHolding() }}>+</button></div>) : (
                     <button onClick={() => openForm()}>Add new holding +</button>
                 )}
             </div>
 
-            <div style={{ paddingLeft: 60, paddingRight: 60 }}>
+            <div style={{ paddingLeft: 20, paddingRight: 20 }}>
                 {error ? (<><label style={{ color: 'red', fontWeight: 800, fontSize: 20 }}>Error: Not able to add holding, try again later</label><br /></>) : (<></>)}
                 {holdings.length === 0 ? (
                     <h2>Your current holding is empty, add new holding to sell electricity</h2>
                 ) : (<>
-                    {holdings.map((item, index) => (
-                        <Holdings units={item.Units} price={item.Price} key={index} />
-                    ))}
+                    <table cellSpacing={0} cellPadding={10} style={{ width: '100%', border: '1px solid black' }}>
+                        <tr style={{ fontSize: 25, backgroundColor: 'blue', color: 'white' }}><td>Sr</td><td>Units</td><td>Price</td><td>Action</td></tr>
+                        {holdings.map((item, index) => (
+                            <Holdings sr={index} units={item.Units} price={item.Price} key={index} />
+                        ))}
+                    </table>
                 </>)}
             </div>
-            <h1 style={{ fontFamily: 'monospace', padding: 40 }}>Transactions</h1>
-            <div style={{ paddingLeft: 60, paddingRight: 60 }}>
+            <h1 style={{ fontFamily: 'monospace', padding: 20 }}>Transactions</h1>
+            <div style={{ paddingLeft: 20, paddingRight: 20 }}>
                 {transactions.length === 0 ? (
                     <h2>Your have no transactions, buy or sell energy units now.</h2>
                 ) : (<>
-                    {transactions.map((item, index) => (
-                        item.From === email || item.To === email ?
-                            <Transaction from={item.From} to={item.To} units={item.Units} total={item.Total} key={index} /> : (<></>)
-                    ))}
+                    <table cellSpacing={0} cellPadding={10} style={{ width: '100%', border: '1px solid black' }}>
+                        <tr style={{ fontSize: 25, backgroundColor: 'blue', color: 'white' }}><td>From</td><td>To</td><td>Units</td><td>Price</td></tr>
+                        {transactions.map((item, index) => (
+                            item.From === email || item.To === email ?
+                                <Transaction from={item.From} to={item.To} units={item.Units} total={item.Total} key={index} /> : (<></>)
+                        ))}
+                    </table>
                 </>)}
+                <br /><br />
             </div>
         </>
     )
