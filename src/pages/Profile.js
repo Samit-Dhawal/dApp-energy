@@ -34,7 +34,7 @@ export default function Profile()
         {
             window.location.href = "signin";
         }
-    },[id,wallet,email])
+    }, [id, wallet, email])
     const openForm = () =>
     {
         setForm(true);
@@ -72,7 +72,7 @@ export default function Profile()
     }
     const getTransactions = async () =>
     {
-        await fetch(`https://dapp-energy.herokuapp.com/readTransactions`).then(res => res.json()).then(data =>
+        await fetch(`https://dapp-energy.herokuapp.com/readTransacionByEmail?email=${ email }`).then(res => res.json()).then(data =>
         {
             if (data.success)
             {
@@ -115,12 +115,12 @@ export default function Profile()
             </div>
             <h1 style={{ fontFamily: 'monospace', padding: 40 }}>Transactions</h1>
             <div style={{ paddingLeft: 60, paddingRight: 60 }}>
-                {transactions.length===0 ? (
+                {transactions.length === 0 ? (
                     <h2>Your have no transactions, buy or sell energy units now.</h2>
                 ) : (<>
                     {transactions.map((item, index) => (
-                        item.From==email||item.To==email?
-                        <Transaction from={item.From} to={item.To} units={item.Units} total={item.Total} key={index} />:(<></>)
+                        item.From === email || item.To === email ?
+                            <Transaction from={item.From} to={item.To} units={item.Units} total={item.Total} key={index} /> : (<></>)
                     ))}
                 </>)}
             </div>
