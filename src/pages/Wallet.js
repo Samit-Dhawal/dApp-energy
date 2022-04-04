@@ -27,11 +27,11 @@ export default function Wallet()
             window.location.href = "signin";
         }
     }, []);
-
+    const server = "http://localhost:8001/";
     const updateWallet = async (evt) =>
     {
         evt.preventDefault();
-        await fetch(`http://localhost:8001/updateWallet?wallet=${ parseInt(wallet) + parseInt(newWallet) }&_id=${ id }`).then(res => res.json()).then(async (data) =>
+        await fetch(`${ server }updateWallet?wallet=${ parseInt(wallet) + parseInt(newWallet) }&_id=${ id }`).then(res => res.json()).then(async (data) =>
         {
             console.log(data);
             localStorage.setItem('wallet', (parseInt(wallet) + parseInt(newWallet)));

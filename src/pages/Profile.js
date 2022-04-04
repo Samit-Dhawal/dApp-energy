@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import Holdings from '../components/profile-components/Holdings';
 import Transaction from '../components/profile-components/Transaction';
+
+const server = "http://localhost:8001/";
 export default function Profile()
 {
     const [email, setEmail] = useState('');
@@ -41,7 +43,7 @@ export default function Profile()
     }
     const saveHolding = async () =>
     {
-        await fetch(`https://dapp-energy.herokuapp.com/createHolding?email=${ email }&id=${ id }&units=${ newUnits }&price=${ newPrice }`).then(res => res.json()).then(data =>
+        await fetch(`${ server }createHolding?email=${ email }&id=${ id }&units=${ newUnits }&price=${ newPrice }`).then(res => res.json()).then(data =>
         {
             if (data.success)
             {
@@ -56,7 +58,7 @@ export default function Profile()
     }
     const getHoldings = async () =>
     {
-        await fetch(`https://dapp-energy.herokuapp.com/readHoldingById?id=${ id }`).then(res => res.json()).then(data =>
+        await fetch(`${ server }readHoldingById?id=${ id }`).then(res => res.json()).then(data =>
         {
             if (data.success)
             {
@@ -72,7 +74,7 @@ export default function Profile()
     }
     const getTransactions = async () =>
     {
-        await fetch(`https://dapp-energy.herokuapp.com/readTransacionByEmail?email=${ email }`).then(res => res.json()).then(data =>
+        await fetch(`${ server }readTransacionByEmail?email=${ email }`).then(res => res.json()).then(data =>
         {
             if (data.success)
             {
