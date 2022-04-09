@@ -44,7 +44,7 @@ export default function Home()
     return <div>
         <Header />
         {email !== '' && id !== '' && wallet !== '' ? (<div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 40, paddingRight: 40 }}><h2>Email : {email}</h2><h2>Wallet : {wallet}</h2></div>) : (<></>)}
-        <h1 style={styles.buyElecToday}>Buy Electricity</h1>
+        <h1 style={styles.buyElecToday}>Buy Electricity Today</h1>
         <div style={styles.backGround}>
             {error ? (<><label style={{ color: 'red', fontWeight: 800, fontSize: 20 }}>Error: Not able to fetch holding, try again later.Try refreshing.</label><br /></>) : (<></>)}
             {id === '' ? (<>You are not signed In, please <a href='/signin'>sign in</a> first.<br /><br />Don't have an account, <a href="/signup">Create an account now</a>.</>) : (
