@@ -50,7 +50,7 @@ export default function SignUp() {
   return (
     <div>
       <Header />
-      <h1 style={styles.signUpHere}>Sign Up Here</h1>
+      <h4 style={styles.signUpHere}>Sign Up Here</h4>
       <form style={styles.formOnly} onSubmit={(evt) => signup(evt)}>
         {error ? (
           <>

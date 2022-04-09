@@ -14,7 +14,7 @@ export default function Profile() {
   const [holdings, setHoldings] = useState([]);
   const [transactions, setTransactions] = useState([]);
   const checkData = (x) => {
-    if (x === null || x === undefined || x === "") {
+    if (x === null || x === undefined || x === "" || x.length===0) {
       return false;
     }
     return true;
@@ -30,6 +30,7 @@ export default function Profile() {
       await getTransactions();
       await getHoldings();
     } else {
+      alert("You are not loggedIn, redirecting to LogIn Page");
       window.location.href = "signin";
     }
   }, [id, wallet, email]);
@@ -91,8 +92,8 @@ export default function Profile() {
           padding: 20,
         }}
       >
-        <h2>{email}</h2>
-        <h2>Wallet : {wallet}$</h2>
+        <h4>{email}</h4>
+        <h4>Wallet : {wallet}$</h4>
         <form style={styles.submit}>
           <a href="/wallet" style={styles.submit}>
             Add Money (+)
@@ -107,7 +108,7 @@ export default function Profile() {
           padding: 20,
         }}
       >
-        <h1 style={{ fontFamily: "monospace" }}>Your Holdings</h1>
+        <h3 style={{ fontFamily: "monospace" }}>Your Holdings</h3>
         {form ? (
           <div>
             <input
@@ -153,9 +154,9 @@ export default function Profile() {
           <></>
         )}
         {holdings.length === 0 ? (
-          <h2>
+          <h4>
             Your current holding is empty, add new holding to sell electricity
-          </h2>
+          </h4>
         ) : (
           <>
             <table
@@ -165,7 +166,7 @@ export default function Profile() {
             >
               <tr
                 style={{
-                  fontSize: 25,
+                  fontSize: 18,
                   backgroundColor: "blue",
                   color: "white",
                 }}
@@ -173,6 +174,8 @@ export default function Profile() {
                 <td>Sr</td>
                 <td>Units</td>
                 <td>Price</td>
+                <td>Admin</td>
+                <td>Status</td>
                 <td>Action</td>
               </tr>
               {holdings.map((item, index) => (
@@ -181,13 +184,16 @@ export default function Profile() {
                   units={item.Units}
                   price={item.Price}
                   key={index}
+                  id={item._id}
+                  admin={item.AdminActive}
+                  sold={item.Sold}
                 />
               ))}
             </table>
           </>
         )}
       </div>
-      <h1 style={{ fontFamily: "monospace", padding: 20 }}>Transactions</h1>
+      <h3 style={{ fontFamily: "monospace", padding: 20 }}>Transactions</h3>
       <div style={{ paddingLeft: 20, paddingRight: 20 }}>
         {transactions.length === 0 ? (
           <h2>Your have no transactions, buy or sell energy units now.</h2>
@@ -200,7 +206,7 @@ export default function Profile() {
             >
               <tr
                 style={{
-                  fontSize: 25,
+                  fontSize: 18,
                   backgroundColor: "blue",
                   color: "white",
                 }}

@@ -28,11 +28,11 @@ export default function Header() {
   };
   return (
     <div style={styles.headerContainer}>
-      <h2 style={{ margin: 10 }}>
+      <h3 style={{ margin: 10 }}>
         <a href="/" style={styles.logo}>
           Save Energy
         </a>
-      </h2>
+      </h3>
       <div style={styles.authModule}>
         {email !== "" && id !== "" && wallet !== "" ? (
           <>

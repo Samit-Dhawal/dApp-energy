@@ -22,6 +22,7 @@ export default function Wallet() {
       setEmail(email);
       setWallet(wallet);
     } else {
+      alert("You are not loggedIn, redirecting to LogIn Page");
       window.location.href = "signin";
     }
   }, []);
@@ -56,8 +57,8 @@ export default function Wallet() {
           padding: 20,
         }}
       >
-        <h2>{email}</h2>
-        <h2>Wallet : {wallet}$</h2>
+        <h4>{email}</h4>
+        <h4>Wallet : {wallet}$</h4>
       </div>
       <form style={styles.formOnly} onSubmit={(evt) => updateWallet(evt)}>
         {error ? (

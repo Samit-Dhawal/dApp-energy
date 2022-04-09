@@ -19,9 +19,9 @@ export default function OnSale({ name, units, price }) {
       setId(id);
       setWallet(wallet);
     } else {
-      console.log("not logged in");
-      // alert('Not logged In, Login first.');
-      // window.location.href="/signin";
+      // console.log("not logged in");
+      alert('Not logged In, Login first.');
+      window.location.href="/signin";
     }
   }, [id, wallet, email]);
 
@@ -48,7 +48,7 @@ export default function OnSale({ name, units, price }) {
             if (data.success) {
               console.log("transaction complete");
               await fetch(
-                `${server}updateWallet?wallet=${
+                `/api/updateWallet?wallet=${
                   parseInt(wallet) - parseInt(units * price)
                 }&_id=${id}`
               )
@@ -86,13 +86,9 @@ export default function OnSale({ name, units, price }) {
         <></>
       )}
       <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-        }}
+      className="row"
       >
-        <h2>Seller : {name}</h2>
+        <h5 className="col-10">Seller : {name}</h5>
         <button
           style={{
             backgroundColor: "#2962ff",
@@ -100,6 +96,7 @@ export default function OnSale({ name, units, price }) {
             padding: 5,
             border: "0px",
           }}
+          className="col-2"
           onClick={() => buy(units, price)}
         >
           Buy

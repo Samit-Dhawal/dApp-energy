@@ -51,13 +51,13 @@ export default function Home() {
             paddingRight: 40,
           }}
         >
-          <h2>Email : {email}</h2>
-          <h2>Wallet : {wallet}</h2>
+          <h4>Email : {email}</h4>
+          <h4>Wallet : {wallet}</h4>
         </div>
       ) : (
         <></>
       )}
-      <h1 style={styles.buyElecToday}>Buy Electricity Today</h1>
+      <h3 style={styles.buyElecToday}>Buy Electricity Today</h3>
       <div style={styles.backGround}>
         {error ? (
           <>

@@ -3,7 +3,7 @@ import Header from "../components/Header";
 
 export default function SignIn() {
   const checkData = (x) => {
-    if (x === null || x === undefined || x === "") {
+    if (x === null || x === undefined || x === "" || x.length===0) {
       return false;
     }
     return true;
@@ -11,6 +11,7 @@ export default function SignIn() {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [error, setError] = useState(false);
+  const [loading,setLoading] = useState(false);
   useEffect(() => {
     var id = localStorage.getItem("id");
     var email = localStorage.getItem("email");
@@ -21,6 +22,7 @@ export default function SignIn() {
   });
   const login = async (evt) => {
     evt.preventDefault();
+    setLoading(true)
     console.log(email, pass);
     await fetch(`/api/readUser?email=${email}&password=${pass}`)
       .then((res) => res.json())
@@ -38,13 +40,14 @@ export default function SignIn() {
           setError(true);
           console.log("login failed");
         }
+        setLoading(false);
       });
   };
   return (
     <div>
       <Header />
-      <h1 style={styles.signInHere}>Sign In Here</h1>
-      <form style={styles.formOnly} onSubmit={(evt) => login(evt)}>
+      <h4 style={styles.signInHere}>Sign In Here</h4>
+      {!loading?(<form style={styles.formOnly} onSubmit={(evt) => login(evt)}>
         {error ? (
           <>
             <label style={{ color: "red", fontWeight: 800, fontSize: 20 }}>
@@ -77,7 +80,7 @@ export default function SignIn() {
         />
         <br />
         <input type="submit" value="Submit" style={styles.submit} />
-      </form>
+      </form>):(<div className="text-center"><div className="spinner-grow bg-primary"></div></div>)}
     </div>
   );
 }
