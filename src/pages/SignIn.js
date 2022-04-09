@@ -26,7 +26,7 @@ export default function SignIn()
     {
         evt.preventDefault();
         console.log(email, pass);
-        await fetch(`${ server }readUser?email=${ email }&password=${ pass }`).then(res => res.json()).then(async (data) =>
+        await fetch(`/readUser?email=${ email }&password=${ pass }`).then(res => res.json()).then(async (data) =>
         {
             console.log(data);
             if (data.success)
