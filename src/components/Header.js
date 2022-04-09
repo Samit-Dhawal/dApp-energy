@@ -46,7 +46,6 @@ export default function Header()
                             Sign In
                         </a>
                     </>)}
-
             </div>
         </div>
     );
