@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 
+// const server = "http://localhost:8001";
+const server = "/api";
 export default function Wallet() {
   const [email, setEmail] = useState("");
   const [id, setId] = useState("");
@@ -29,7 +31,7 @@ export default function Wallet() {
   const updateWallet = async (evt) => {
     evt.preventDefault();
     await fetch(
-      `/api/updateWallet?wallet=${
+      `${server}/updateWallet?wallet=${
         parseInt(wallet) + parseInt(newWallet)
       }&_id=${id}`
     )

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import OnSale from "../components/home-components/OnSale";
 
+// const server = "http://localhost:8001";
+const server = "/api";
 export default function Home() {
   const checkData = (x) => {
     if (x === null || x === undefined || x === "") {
@@ -26,7 +28,7 @@ export default function Home() {
     }
   }, []);
   const getHoldings = async () => {
-    await fetch(`/api/readHoldings`)
+    await fetch(`${server}/readHoldings`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -52,7 +54,7 @@ export default function Home() {
           }}
         >
           <h4>Email : {email}</h4>
-          <h4>Wallet : {wallet}</h4>
+          <h4>Wallet : {wallet} $</h4>
         </div>
       ) : (
         <></>
@@ -97,7 +99,7 @@ export default function Home() {
                           name={item.Email}
                           units={item.Units}
                           price={item.Price}
-                          key={index}
+                          key={Math.floor(Math.random()*1000)}
                         />
                       </>
                     ) : (

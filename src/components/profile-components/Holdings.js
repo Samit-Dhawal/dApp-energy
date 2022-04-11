@@ -1,3 +1,5 @@
+// const server = "http://localhost:8001";
+const server = "/api";
 export default function Holdings({
   sr,
   units,
@@ -7,7 +9,7 @@ export default function Holdings({
   sold,
 }) {
     const removeHolding=async(id)=>{
-        await fetch(`http://localhost:8001/removeHoliding?id=${id}`).then(res=>res.json()).then(data=>{
+        await fetch(`${server}/removeHoliding?id=${id}`).then(res=>res.json()).then(data=>{
             if(data.success){
                 alert('Holding deleted');
                 window.location.reload();

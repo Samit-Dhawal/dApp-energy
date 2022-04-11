@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 
+// const server = "http://localhost:8001";
+const server = "/api";
 export default function SignIn() {
   const checkData = (x) => {
     if (x === null || x === undefined || x === "" || x.length===0) {
@@ -17,6 +19,7 @@ export default function SignIn() {
     var email = localStorage.getItem("email");
     var wallet = localStorage.getItem("wallet");
     if (checkData(id) && checkData(email) && checkData(wallet)) {
+      alert('Already Logged In');
       window.location.href = "/profile";
     }
   });
@@ -24,7 +27,7 @@ export default function SignIn() {
     evt.preventDefault();
     setLoading(true)
     console.log(email, pass);
-    await fetch(`/api/readUser?email=${email}&password=${pass}`)
+    await fetch(`${server}/readUser?email=${email}&password=${pass}`)
       .then((res) => res.json())
       .then(async (data) => {
         console.log(data);

@@ -3,6 +3,9 @@ import Header from "../components/Header";
 import Holdings from "../components/profile-components/Holdings";
 import Transaction from "../components/profile-components/Transaction";
 
+
+// const server = "http://localhost:8001";
+const server = "/api";
 export default function Profile() {
   const [email, setEmail] = useState("");
   const [id, setId] = useState("");
@@ -39,7 +42,7 @@ export default function Profile() {
   };
   const saveHolding = async () => {
     await fetch(
-      `/api/createHolding?email=${email}&id=${id}&units=${newUnits}&price=${newPrice}`
+      `${server}/createHolding?email=${email}&id=${id}&units=${newUnits}&price=${newPrice}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -53,7 +56,7 @@ export default function Profile() {
       });
   };
   const getHoldings = async () => {
-    await fetch(`/api/readHoldingById?id=${id}`)
+    await fetch(`${server}/readHoldingById?id=${id}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -67,7 +70,7 @@ export default function Profile() {
       });
   };
   const getTransactions = async () => {
-    await fetch(`/api/readTransacionByEmail?email=${email}`)
+    await fetch(`${server}/readTransacionByEmail?email=${email}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {

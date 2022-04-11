@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
-export default function OnSale({ name, units, price }) {
+
+// const server = "http://localhost:8001";
+const server = "/api";
+export default function OnSale({ name, units, price,key }) {
   const checkData = (x) => {
     if (x === null || x === undefined || x === "") {
       return false;
@@ -39,7 +42,7 @@ export default function OnSale({ name, units, price }) {
       );
       if (choice) {
         await fetch(
-          `/api/createTransaction?from=${name}&to=${email}&units=${units}&total=${
+          `${server}/createTransaction?from=${name}&to=${email}&units=${units}&total=${
             units * price
           }`
         )
@@ -48,7 +51,7 @@ export default function OnSale({ name, units, price }) {
             if (data.success) {
               console.log("transaction complete");
               await fetch(
-                `/api/updateWallet?wallet=${
+                `${server}/updateWallet?wallet=${
                   parseInt(wallet) - parseInt(units * price)
                 }&_id=${id}`
               )
@@ -74,7 +77,7 @@ export default function OnSale({ name, units, price }) {
     }
   };
   return (
-    <div style={styles.contianer}>
+    <div style={styles.contianer} key={Math.floor(Math.random()*1000)}>
       {error ? (
         <>
           <label style={{ color: "red", fontWeight: 800, fontSize: 20 }}>
@@ -112,8 +115,8 @@ export default function OnSale({ name, units, price }) {
           justifyContent: "space-between",
         }}
       >
-        <h3>Units : {units}</h3>
-        <h3>Price/Unit : {price}</h3>
+        <h5>Units : {units}</h5>
+        <h5>Price/Unit : {price}</h5>
       </div>
     </div>
   );
