@@ -5,7 +5,7 @@ import Gun from "gun";
 const server = "/api";
 
 const gun = Gun({
-  peers: [`${server}/gun`],
+  peers: [`https://energy-share-dapp.herokuapp.com/gun`],
 });
 
 export default function OnSale({ name, units, price, _id }) {

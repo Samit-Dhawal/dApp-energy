@@ -19,8 +19,8 @@ export default function AdminHeader(){
         }
       },[]);
       const logout = () => {
-        localStorage.setItem("id", "");
-        localStorage.setItem("email", "");
+        localStorage.setItem("_id", "");
+        localStorage.setItem("_email", "");
         window.location.href = "/admin-signin";
       };
       
