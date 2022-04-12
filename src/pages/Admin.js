@@ -1,8 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useReducer } from "react";
 import AdminHeader from "../components/AdminHeader";
+import Gun from 'gun';
 
-// const server = "http://localhost:8001";
-const server = "/api";
+const gun = Gun({
+  peers: ["http://localhost:8001/gun"],
+});
+
+const initialState = {
+  transactions: [],
+};
+
+function reducer(state, transaction) {
+  return {
+    transactions: [transaction, ...state.transactions],
+  };
+}
+
+const server = "http://localhost:8001";
+// const server = "/api";
 export default function Admin() {
   const checkData = (x) => {
     if (x === null || x === undefined || x === "" || x.length===0) {
@@ -15,15 +30,28 @@ export default function Admin() {
   const [notApproved, setNotApproved] = useState([]);
   const [email, setEmail] = useState("");
   const [id, setId] = useState("");
+  const [state,dispatch] = useReducer(reducer,initialState);
   useEffect(async () => {
-    var id = localStorage.getItem("id");
-    var email = localStorage.getItem("email");
+    var id = localStorage.getItem("_id");
+    var email = localStorage.getItem("_email");
     if (checkData(id) && checkData(email)) {
       setEmail(email);
       setId(id);
+      const transactions = gun.get("energy_share");
+      transactions.on(m=>{
+        dispatch({
+          from:m.from,
+          to:m.to,
+          units:m.units,
+          total:m.total,
+          createdAt:m.createdAt
+        })
+      });
+      console.log(state.transactions)
     }else{
       alert('Admin not signed in')
-      window.location.href="/admin-signin";
+      alert(localStorage.getItem("_id"))
+      // window.location.href="/admin-signin";
     }
     await fetch(`${server}/readTransactions`)
       .then((res) => res.json())
@@ -42,12 +70,12 @@ export default function Admin() {
   return (
     <div>
       <AdminHeader/>
-      <div class="m-3 row">
-        <div class="col-6">
-          <div class="col-6 p-3 h3 text-center col-md-12">
+      <div className="m-3 row">
+        <div className="col-6">
+          <div className="col-6 p-3 h3 text-center col-md-12">
             <button
               type="button"
-              class="btn-warning "
+              className="btn-warning "
               data-bs-toggle="collapse"
               data-bs-target="#pending"
             >
@@ -57,7 +85,7 @@ export default function Admin() {
           </div>
           <div
             id="pending"
-            class="col-12 bg-warning text-black p-4 col-md-12"
+            className="col-12 bg-warning text-black p-4 col-md-12"
           >
             <table
           cellSpacing={0}
@@ -87,11 +115,11 @@ export default function Admin() {
             </table>
           </div>
         </div>
-        <div class="col-6">
-          <div class="col-6 p-3 h3 text-center col-md-12">
+        <div className="col-6">
+          <div className="col-6 p-3 h3 text-center col-md-12">
             <button
               type="button"
-              class="btn-success"
+              className="btn-success"
               data-bs-toggle="collapse"
               data-bs-target="#approved"
             >
@@ -101,7 +129,7 @@ export default function Admin() {
           </div>
           <div
             id="approved"
-            class="col-12 bg-success text-white p-4 col-md-12"
+            className="col-12 bg-success text-white p-4 col-md-12"
           >
           <table
           cellSpacing={0}
@@ -133,11 +161,11 @@ export default function Admin() {
         </div>
       </div>
       <div>
-        <div class="">
-          <div class=" p-3 h3 text-center ">
+        <div className="">
+          <div className=" p-3 h3 text-center ">
             <button
               type="button"
-              class="btn-info "
+              className="btn-info "
               data-bs-toggle="collapse"
               data-bs-target="#allTransac"
             >
@@ -145,7 +173,7 @@ export default function Admin() {
               Transaction
             </button>
           </div>
-          <div id="allTransac" class=" bg-info text-black p-4 mx-5">
+          <div id="allTransac" className=" bg-info text-black p-4 mx-5">
             <table
               cellSpacing={0}
               cellPadding={10}
@@ -174,6 +202,36 @@ export default function Admin() {
             </table>
           </div>
         </div>
+      </div>
+      <div>
+        <div className="display-6">Gun JS Transactions</div>
+        <table
+              cellSpacing={0}
+              cellPadding={10}
+              style={{ width: "100%", border: "1px solid black" }}>
+          <tr
+          style={{
+            fontSize: 18,
+            backgroundColor: "blue",
+            color: "white",
+          }}
+          >
+            <td>From</td>
+            <td>To</td>
+            <td>Units</td>
+            <td>Total</td>
+            <td>CreatedAt</td>
+          </tr>
+        {state.transactions.map((item,index)=>(
+          <tr>
+            <td>{item.from}</td>
+            <td>{item.to}</td>
+            <td>{item.units}</td>
+            <td>{item.total}</td>
+            <td>{item.createdAt}</td>
+          </tr>
+        ))}
+        </table>
       </div>
     </div>
   );

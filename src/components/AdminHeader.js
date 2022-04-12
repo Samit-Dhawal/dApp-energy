@@ -10,8 +10,8 @@ export default function AdminHeader(){
       const [email, setEmail] = useState("");
       const [id, setId] = useState("");
       useEffect(() => {
-        var id = localStorage.getItem("id");
-        var email = localStorage.getItem("email");
+        var id = localStorage.getItem("_id");
+        var email = localStorage.getItem("_email");
         console.log(id,email);
         if (checkData(id) && checkData(email)) {
             setId(id);

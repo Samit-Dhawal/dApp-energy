@@ -1,5 +1,5 @@
-// const server = "http://localhost:8001";
-const server = "/api";
+const server = "http://localhost:8001";
+// const server = "/api";
 export default function Holdings({
   sr,
   units,

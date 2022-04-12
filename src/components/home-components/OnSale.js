@@ -1,8 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useReducer } from "react";
+import Gun from "gun";
 
-// const server = "http://localhost:8001";
-const server = "/api";
-export default function OnSale({ name, units, price,key }) {
+const gun = Gun({
+  peers: ["http://localhost:8001/gun"],
+});
+
+const server = "http://localhost:8001";
+// const server = "/api";
+export default function OnSale({ name, units, price, _id }) {
   const checkData = (x) => {
     if (x === null || x === undefined || x === "") {
       return false;
@@ -13,6 +18,7 @@ export default function OnSale({ name, units, price,key }) {
   const [id, setId] = useState("");
   const [wallet, setWallet] = useState("");
   const [error, setError] = useState(false);
+  // const [state,dispatch] = useReducer(reducer,initialState);
   useEffect(() => {
     var id = localStorage.getItem("id");
     var email = localStorage.getItem("email");
@@ -23,8 +29,8 @@ export default function OnSale({ name, units, price,key }) {
       setWallet(wallet);
     } else {
       // console.log("not logged in");
-      alert('Not logged In, Login first.');
-      window.location.href="/signin";
+      alert("Not logged In, Login first.");
+      window.location.href = "/signin";
     }
   }, [id, wallet, email]);
 
@@ -44,12 +50,22 @@ export default function OnSale({ name, units, price,key }) {
         await fetch(
           `${server}/createTransaction?from=${name}&to=${email}&units=${units}&total=${
             units * price
-          }`
+          }&id=${_id}`
         )
           .then((res) => res.json())
           .then(async (data) => {
             if (data.success) {
-              console.log("transaction complete");
+              //Gun JS
+              const transactions = gun.get("energy_share");
+              transactions.set({
+                from: name,
+                to: email,
+                units: units,
+                total: units * price,
+                createdAt: Date.now(),
+              });
+              //Gun JS
+              alert("transaction complete");
               await fetch(
                 `${server}/updateWallet?wallet=${
                   parseInt(wallet) - parseInt(units * price)
@@ -77,7 +93,7 @@ export default function OnSale({ name, units, price,key }) {
     }
   };
   return (
-    <div style={styles.contianer} key={Math.floor(Math.random()*1000)}>
+    <div style={styles.contianer} key={Math.floor(Math.random() * 1000)}>
       {error ? (
         <>
           <label style={{ color: "red", fontWeight: 800, fontSize: 20 }}>
@@ -88,9 +104,7 @@ export default function OnSale({ name, units, price,key }) {
       ) : (
         <></>
       )}
-      <div
-      className="row"
-      >
+      <div className="row">
         <h5 className="col-10">Seller : {name}</h5>
         <button
           style={{

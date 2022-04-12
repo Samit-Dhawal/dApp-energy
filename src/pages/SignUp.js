@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 
-// const server = "http://localhost:8001";
-const server = "/api";
+const server = "http://localhost:8001";
+// const server = "/api";
 export default function SignUp() {
   const checkData = (x) => {
     if (x === null || x === undefined || x === "") {

@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import OnSale from "../components/home-components/OnSale";
 
-// const server = "http://localhost:8001";
-const server = "/api";
+const server = "http://localhost:8001";
+// const server = "/api";
 export default function Home() {
   const checkData = (x) => {
     if (x === null || x === undefined || x === "") {
@@ -16,7 +16,7 @@ export default function Home() {
   const [id, setId] = useState("");
   const [wallet, setWallet] = useState("");
   const [error, setError] = useState(false);
-  useEffect(() => {
+  useEffect(async() => {
     var id = localStorage.getItem("id");
     var email = localStorage.getItem("email");
     var wallet = localStorage.getItem("wallet");
@@ -24,8 +24,11 @@ export default function Home() {
       setEmail(email);
       setId(id);
       setWallet(wallet);
-      getHoldings();
+      await getHoldings();
+      console.log('sale data :')
+      console.table(saleData);
     }
+    
   }, []);
   const getHoldings = async () => {
     await fetch(`${server}/readHoldings`)
@@ -33,11 +36,14 @@ export default function Home() {
       .then((data) => {
         if (data.success) {
           setSaleData(data.data);
+          console.log('sale data :')
+          console.table(saleData);
           setError(false);
         } else {
           setError(true);
         }
       });
+      console.log('sale data :')
     console.table(saleData);
   };
   return (
@@ -100,6 +106,7 @@ export default function Home() {
                           units={item.Units}
                           price={item.Price}
                           key={Math.floor(Math.random()*1000)}
+                          _id={item.Id}
                         />
                       </>
                     ) : (

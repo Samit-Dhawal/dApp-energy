@@ -19,7 +19,7 @@ export default function Header() {
       setId(id);
       setWallet(wallet);
     }
-  });
+  },[]);
   const logout = () => {
     localStorage.setItem("id", "");
     localStorage.setItem("email", "");

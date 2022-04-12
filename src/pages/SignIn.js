@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 
-// const server = "http://localhost:8001";
-const server = "/api";
+const server = "http://localhost:8001";
+// const server = "/api";
 export default function SignIn() {
   const checkData = (x) => {
     if (x === null || x === undefined || x === "" || x.length===0) {
@@ -22,7 +22,7 @@ export default function SignIn() {
       alert('Already Logged In');
       window.location.href = "/profile";
     }
-  });
+  },[]);
   const login = async (evt) => {
     evt.preventDefault();
     setLoading(true)
