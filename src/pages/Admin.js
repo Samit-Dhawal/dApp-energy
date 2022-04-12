@@ -2,8 +2,11 @@ import React, { useState, useEffect,useReducer } from "react";
 import AdminHeader from "../components/AdminHeader";
 import Gun from 'gun';
 
+// const server = "http://localhost:8001";
+const server = "/api";
+
 const gun = Gun({
-  peers: ["http://localhost:8001/gun"],
+  peers: [`${server}/gun`],
 });
 
 const initialState = {
@@ -16,8 +19,6 @@ function reducer(state, transaction) {
   };
 }
 
-const server = "http://localhost:8001";
-// const server = "/api";
 export default function Admin() {
   const checkData = (x) => {
     if (x === null || x === undefined || x === "" || x.length===0) {

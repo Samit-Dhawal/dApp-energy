@@ -4,8 +4,8 @@ import Holdings from "../components/profile-components/Holdings";
 import Transaction from "../components/profile-components/Transaction";
 
 
-const server = "http://localhost:8001";
-// const server = "/api";
+// const server = "http://localhost:8001";
+const server = "/api";
 export default function Profile() {
   const [email, setEmail] = useState("");
   const [id, setId] = useState("");
