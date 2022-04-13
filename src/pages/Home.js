@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import OnSale from "../components/home-components/OnSale";
 
-// const server = "http://localhost:8001";
-const server = "/api";
+const server = "http://localhost:8001";
+// const server = "/api";
 export default function Home() {
   const checkData = (x) => {
     if (x === null || x === undefined || x === "") {

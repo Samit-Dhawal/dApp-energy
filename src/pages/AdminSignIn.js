@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
-// const server = "http://localhost:8001";
-const server = "/api";
+const server = "http://localhost:8001";
+// const server = "/api";
 export default function AdminSignIn() {
   const checkData = (x) => {
     if (x === null || x === undefined || x === "" || x.length === 0) {

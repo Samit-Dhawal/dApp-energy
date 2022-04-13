@@ -1,11 +1,11 @@
 import { useState, useEffect, useReducer } from "react";
 import Gun from "gun";
 
-// const server = "http://localhost:8001";
-const server = "/api";
+const server = "http://localhost:8001";
+// const server = "/api";
 
 const gun = Gun({
-  peers: [`http://energy-share-dapp.herokuapp.com/gun`],
+  peers: [`${server}/gun`],
 });
 
 export default function OnSale({ name, units, price, _id }) {

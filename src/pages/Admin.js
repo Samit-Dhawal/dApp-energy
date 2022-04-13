@@ -2,11 +2,11 @@ import React, { useState, useEffect, useReducer } from "react";
 import AdminHeader from "../components/AdminHeader";
 import Gun from "gun";
 
-// const server = "http://localhost:8001";
-const server = "/api";
+const server = "http://localhost:8001";
+// const server = "/api";
 
 const gun = Gun({
-  peers: [`http://energy-share-dapp.herokuapp.com/gun`],
+  peers: [`${server}/gun`],
 });
 
 const initialState = {
@@ -40,6 +40,7 @@ export default function Admin() {
       setEmail(email);
       setId(id);
       if(!flag){
+        console.log(email,id);
       const transactions = gun.get("energy_share_dapp");
       transactions.map().once((m) => {
         dispatch({
