@@ -36,7 +36,7 @@ export default function Profile() {
       alert("You are not loggedIn, redirecting to LogIn Page");
       window.location.href = "signin";
     }
-  }, [id, wallet, email]);
+  }, [id]);
   const openForm = () => {
     setForm(true);
   };
@@ -199,7 +199,7 @@ export default function Profile() {
       <h3 style={{ fontFamily: "monospace", padding: 20 }}>Transactions</h3>
       <div style={{ paddingLeft: 20, paddingRight: 20 }}>
         {transactions.length === 0 ? (
-          <h2>Your have no transactions, buy or sell energy units now.</h2>
+          <h4>Your have no transactions, buy or sell energy units now.</h4>
         ) : (
           <>
             <table

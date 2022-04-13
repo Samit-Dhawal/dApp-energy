@@ -5,7 +5,7 @@ import Gun from "gun";
 const server = "/api";
 
 const gun = Gun({
-  peers: [`https://energy-share-dapp.herokuapp.com/gun`],
+  peers: [`http://energy-share-dapp.herokuapp.com/gun`],
 });
 
 export default function OnSale({ name, units, price, _id }) {
@@ -28,11 +28,11 @@ export default function OnSale({ name, units, price, _id }) {
       setEmail(email);
       setId(id);
       setWallet(wallet);
-    } else {
-      // console.log("not logged in");
-      alert("Not logged In, Login first.");
-      window.location.href = "/signin";
-    }
+    } // else {
+    //   // console.log("not logged in");
+    //   alert("Not logged In, Login first.");
+    //   window.location.href = "/signin";
+    // }
   }, [id, wallet, email]);
 
   const buy = async (units, price) => {
@@ -57,16 +57,33 @@ export default function OnSale({ name, units, price, _id }) {
           .then(async (data) => {
             if (data.success) {
               //Gun JS
-              const transactions = gun.get("energy_share");
-              transactions.set({
-                from: name,
-                to: email,
-                units: units,
-                total: units * price,
-                createdAt: Date.now(),
-              });
+              const transactions = gun.get("energy_share_dapp");
+              var current_datetime = new Date();
+              transactions.set(
+                {
+                  from: name,
+                  to: email,
+                  units: units,
+                  total: units * price,
+                  createdAt:
+                    current_datetime.getDate() +
+                    "/" +
+                    (current_datetime.getMonth() + 1) +
+                    "/"+
+                    current_datetime.getFullYear() +
+                    "@" +
+                    current_datetime.getHours() +
+                    ":" +
+                    current_datetime.getMinutes() +
+                    ":" +
+                    current_datetime.getSeconds(),
+                },
+                (result) => {
+                  console.log(result);
+                  
+                }
+              );
               //Gun JS
-              alert("transaction complete");
               await fetch(
                 `${server}/updateWallet?wallet=${
                   parseInt(wallet) - parseInt(units * price)
@@ -81,6 +98,7 @@ export default function OnSale({ name, units, price, _id }) {
                       parseInt(wallet) - parseInt(units * price)
                     );
                     setWallet(parseInt(wallet) - parseInt(units * price));
+                    alert("transaction complete");
                     window.location.reload();
                   }
                 });

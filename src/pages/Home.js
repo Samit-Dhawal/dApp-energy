@@ -25,8 +25,6 @@ export default function Home() {
       setId(id);
       setWallet(wallet);
       await getHoldings();
-      console.log('sale data :')
-      console.table(saleData);
     }
     
   }, []);
@@ -36,8 +34,6 @@ export default function Home() {
       .then((data) => {
         if (data.success) {
           setSaleData(data.data);
-          console.log('sale data :')
-          console.table(saleData);
           setError(false);
         } else {
           setError(true);
@@ -106,7 +102,7 @@ export default function Home() {
                           units={item.Units}
                           price={item.Price}
                           key={Math.floor(Math.random()*1000)}
-                          _id={item.Id}
+                          _id={item._id}
                         />
                       </>
                     ) : (
