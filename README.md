@@ -35,8 +35,14 @@ The benefit of saving the transactions on the decentralized database is, none ha
 ## Go to https://energy-share-dapps.netlify.app/ and login or sign-up to your account
 <img src="https://media.giphy.com/media/wYxkWLDsJaEyyTlaUk/giphy.gif"/>
 
-## Admin approving the holding created just now, holding will be avaiable to see in the market
+## creating a new holding which is yet to be approved by admin
 <img src="https://media.giphy.com/media/pz8WShNqCUGcgffVDS/giphy.gif"/>
 
-## Loggin In from another account and buying the holding
+## Admin approving the holding created just now, holding will be avaiable to see in the market
+<img src="https://media.giphy.com/media/zN52zPRsLE8oQ0gIPj/giphy.gif"/>
 
+## Loggin In from another account and buying the holding
+<img src="https://media.giphy.com/media/dSSYuhr4cNhvi3MDFt/giphy.gif"/>
+
+## Transaction created and visible on admin side
+<img src="https://media.giphy.com/media/93rrJrgJinuoXSgnn1/giphy.gif"/>
