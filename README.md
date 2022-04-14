@@ -32,6 +32,11 @@ This is a market place for selling and buying energy units from an online market
 The benefit of saving the transactions on the decentralized database is, none has the whole access on the data, and none can breach the security and access the database as the data is distributed into many nodes on the internet.
 
 
-<div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/FlRWhgN8VjXNo5jGnt" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/FlRWhgN8VjXNo5jGnt">via GIPHY</a></p>
-
+## Go to https://energy-share-dapps.netlify.app/ and login or sign-up to your account
 <img src="https://media.giphy.com/media/wYxkWLDsJaEyyTlaUk/giphy.gif"/>
+
+## Admin approving the holding created just now, holding will be avaiable to see in the market
+<img src="https://media.giphy.com/media/pz8WShNqCUGcgffVDS/giphy.gif"/>
+
+## Loggin In from another account and buying the holding
+
