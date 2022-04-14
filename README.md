@@ -1,70 +1,32 @@
-# Getting Started with Create React App
+## After Download the code
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+In the project directory, run the following command in terminal
 
-## Available Scripts
+### `npm i`
 
-In the project directory, you can run:
+to install all the dependencies required
 
 ### `npm start`
 
-Runs the app in the development mode.\
+to Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Backend of the project
 
-### `npm test`
+To download and use the backend code of this project visit : [dapp-energy-server](https://github.com/HARSH-KUMAR10/dapp-energy-server)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# About the project - Energy Share
+* This project was created for implementation of the concept of decentralized network and database.
+* FrontEnd : ReactJS, Bootstrap.
+* Backend : Node, Express.
+* Database : MongoDB Atlas, mongoose.
+* Dapp technology : GunJS
+* live project link : [link](https://energy-share-dapps.netlify.app/)
 
-### `npm run build`
+## GunJS
+GUN is a small, easy, and fast protocol for syncing data. Because GUN is small, it can be added to your app to improve a single feature. But because GUN is easy, it can also replace hundreds or thousands of lines of code, networking calls, storage boilerplate, pub/sub routing, cache invalidation, and more. The power of GUN is that it abstracts this complexity into a unified simple API that is very different than traditional systems, with the aim of making it easy to build cool apps quickly.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Project outline
+This is a market place for selling and buying energy units from an online market. We have created the marketplace where a user will login and add what are there holding to the market, before the holdings are posted on the market, admin will have to approve the holding if found proper or else reject. Once a holding is approved by the admin, it will be avaiable to all other users in the market to buy. When someone will buy the holding the transactions will be saved in the mongodb database as well as the decentralized gunjs database.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The benefit of saving the transactions on the decentralized database is, none has the whole access on the data, and none can breach the security and access the database as the data is distributed into many nodes on the internet.
