@@ -1,4 +1,4 @@
-## After Download the code
+## After Downloading the code
 
 In the project directory, run the following command in terminal
 
