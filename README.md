@@ -34,4 +34,4 @@ The benefit of saving the transactions on the decentralized database is, none ha
 
 <div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/FlRWhgN8VjXNo5jGnt" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/FlRWhgN8VjXNo5jGnt">via GIPHY</a></p>
 
-<img src="https://giphy.com/embed/FlRWhgN8VjXNo5jGnt"/>
+<img src="https://media.giphy.com/media/wYxkWLDsJaEyyTlaUk/giphy.gif"/>
