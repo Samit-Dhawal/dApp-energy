@@ -30,3 +30,6 @@ GUN is a small, easy, and fast protocol for syncing data. Because GUN is small, 
 This is a market place for selling and buying energy units from an online market. We have created the marketplace where a user will login and add what are there holding to the market, before the holdings are posted on the market, admin will have to approve the holding if found proper or else reject. Once a holding is approved by the admin, it will be avaiable to all other users in the market to buy. When someone will buy the holding the transactions will be saved in the mongodb database as well as the decentralized gunjs database.
 
 The benefit of saving the transactions on the decentralized database is, none has the whole access on the data, and none can breach the security and access the database as the data is distributed into many nodes on the internet.
+
+
+<iframe src="https://giphy.com/embed/FlRWhgN8VjXNo5jGnt" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/FlRWhgN8VjXNo5jGnt">via GIPHY</a></p>
