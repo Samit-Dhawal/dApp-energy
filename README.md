@@ -1,4 +1,4 @@
-## After Download the code
+## After Downloading the code
 
 In the project directory, run the following command in terminal
 
@@ -30,3 +30,19 @@ GUN is a small, easy, and fast protocol for syncing data. Because GUN is small, 
 This is a market place for selling and buying energy units from an online market. We have created the marketplace where a user will login and add what are there holding to the market, before the holdings are posted on the market, admin will have to approve the holding if found proper or else reject. Once a holding is approved by the admin, it will be avaiable to all other users in the market to buy. When someone will buy the holding the transactions will be saved in the mongodb database as well as the decentralized gunjs database.
 
 The benefit of saving the transactions on the decentralized database is, none has the whole access on the data, and none can breach the security and access the database as the data is distributed into many nodes on the internet.
+
+
+## Go to https://energy-share-dapps.netlify.app/ and login or sign-up to your account
+<img src="https://media.giphy.com/media/wYxkWLDsJaEyyTlaUk/giphy.gif"/>
+
+## creating a new holding which is yet to be approved by admin
+<img src="https://media.giphy.com/media/pz8WShNqCUGcgffVDS/giphy.gif"/>
+
+## Admin approving the holding created just now, holding will be avaiable to see in the market
+<img src="https://media.giphy.com/media/zN52zPRsLE8oQ0gIPj/giphy.gif"/>
+
+## Loggin In from another account and buying the holding
+<img src="https://media.giphy.com/media/dSSYuhr4cNhvi3MDFt/giphy.gif"/>
+
+## Transaction created and visible on admin side
+<img src="https://media.giphy.com/media/93rrJrgJinuoXSgnn1/giphy.gif"/>
